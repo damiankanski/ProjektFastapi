@@ -1,19 +1,14 @@
 from pydantic import BaseModel
+from user import User
 
 #Post Models
 
 class Post(BaseModel):
-    id = int
-    title = str
-    description = str
+    id: int
+    title:  str
+    description: str
 
-class PostCreate(Post):
-    pass
-
-class PostAll(BaseModel):
-    id = int
-    title = str
-    description = str
-
-class PostOne(Post):
-    pass
+class PostOpt(Post):
+    user: User
+    class Config:
+        orm_mode = True
