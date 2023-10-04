@@ -14,7 +14,7 @@ class User(base):
 
 #stworz usera
 
-def creat_user(user: User, db: Session) -> User:
+def create_user(user: User, db: Session) -> User:
     newUser = User(id=user.id, name=user.name, password=user.password)
     db.add(newUser)
     db.commit()
