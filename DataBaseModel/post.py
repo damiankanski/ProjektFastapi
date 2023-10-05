@@ -17,8 +17,8 @@ class Post(base):
 
 
 # Create a post
-def create_post(post: Post, db: Session) -> Post:
-    newPost = Post(id=post.id, title=post.title, description=post.description, user=post.user)
+def create_post(post: Post, db: Session, user: int) -> Post:
+    newPost = Post(id=post.id, title=post.title, description=post.description, user_id=user)
 
     db.add(newPost)
     db.commit()
@@ -36,26 +36,26 @@ def get_all_posts(db: Session):
 
 #wszystkie posty konkretnego uzytkownika
 
-def get_all_user_post(db: Session, id: int):
+def get_all_user_post(id: int, db: Session):
     user_posts =db.query(Post).filter(Post.user_id == id).all()
     return user_posts
 
 #wyszukaj konkretny post dla id_postu
-def get_direct_id_post(id: int, db: Session):
-    direct_id_post = db.query(Post).filter(Post.id == id)
+def get_direct_id_post(user: int, id: int,db: Session):
+    direct_id_post = db.query(Post).filter(Post.user_id == user, Post.id == id)
     return direct_id_post
 
 
 #Wyszukaj konkretny post po title
 
-def get_title_post(title: str, db: Session):
-    title_post = db.query(Post).filter(Post.title == title)
+def get_title_post(user: int, title: str, db: Session):
+    title_post = db.query(Post).filter(Post.user_id == user, Post.title == title)
     return title_post
 
 #modyfikacja postu
-def modify_post(id:int, db: Session , values: Dict[str, Union[str, int]]):
+def modify_post(user: int,id:int, db: Session , values: Dict[str, Union[str, int]]):
 
-    modifyPost = db.query(Post).filter(Post.id == id).first()
+    modifyPost = db.query(Post).filter(Post.user_id == user, Post.id == id).first()
 
     if modifyPost:
         for key, value in values.items():
@@ -69,8 +69,8 @@ def modify_post(id:int, db: Session , values: Dict[str, Union[str, int]]):
 
 #usuniecie postu
 
-def delete_post(id: int, db: Session, user: int):
-    deleted = db.query(Post).filter(Post.id == id)
+def delete_post(user: int, id: int, db: Session,):
+    deleted = db.query(Post).filter(Post.user_id == user, Post.id == id)
 
     post = deleted.first()
 

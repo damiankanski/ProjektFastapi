@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="79e3cc59-40cb-4032-aff6-2ff16cf3e194" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBaseModel/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseModel/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBaseModel/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseModel/post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/routerpost.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routerpost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/routeruser.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routeruser.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +34,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="PM02-added-routers" />
+                    <option name="lastUsedInstant" value="1696432728" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="PM01-edit-PydanticModel" />
                     <option name="lastUsedInstant" value="1696430841" />
                   </RecentBranch>
@@ -51,20 +57,23 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2WIHfCreLsA7pInm0d7EKhkRnHo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "PM01-edit-PydanticModel",
-    "last_opened_file_path": "C:/Users/Damian/PycharmProjects/Szkudniki",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PM02-added-routers&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Damian/PycharmProjects/Szkudniki&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Socialmedia1" />

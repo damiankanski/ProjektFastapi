@@ -48,8 +48,8 @@ def modify_user(db: Session, user_id: int, values: Dict[str, Union[str, int]]):
         raise ValueError("User not found")
 
 #usun uzytkownika
-def delete_user(db: Session, name: str):
-    deleted = db.query(User).filter(User.name == name)
+def delete_user(db: Session, user_id: str):
+    deleted = db.query(User).filter(User.id == user_id)
 
     user = deleted.first()
 
