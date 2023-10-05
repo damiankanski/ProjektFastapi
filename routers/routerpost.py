@@ -1,9 +1,10 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from PydenticModel.post import Post, PostOpt
 from starlette import status
 from sqlalchemy.orm import Session
 from database import get_db
+from DataBaseModel.post import Post as dataPost
 from DataBaseModel.post import (
     create_post,
     get_all_posts,
@@ -32,28 +33,35 @@ async def get_all_Posts(db: Session = Depends(get_db)) -> List[Post]:
 # get all post for direct user
 @router.get("/allposts/{user_id}", status_code=status.HTTP_200_OK)
 async def get_all_user_Post(user_id: int, db: Session = Depends(get_db), ) -> List[PostOpt]:
+    if user_id not in dataPost:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="This user is not exist")
     return get_all_user_post(id=user_id, db=db)
 
 
 # get post for post_id
 @router.get("/onepost/{user_id}/{post_id}", status_code=status.HTTP_200_OK)
-async def get_direct_id_Post(user_id: int, post_id: int, db: Session = Depends(get_db)) -> List[PostOpt]:
-    return get_direct_id_post(user=user_id, id=post_id,  db=db)
+async def get_direct_id_Post(user_id: int, post_id: int, db: Session = Depends(get_db)) -> PostOpt:
+    if user_id not in dataPost:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="This user is not exist")
+    elif post_id not in dataPost:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="This post is not exist")
+    else:
+        return get_direct_id_post(user=user_id, id=post_id,  db=db)
 
 
 # get_post for post_title
 @router.get("/onepost/{title}", status_code=status.HTTP_200_OK)
-async def get_title_Post(title: str,  db: Session = Depends(get_db)) -> List[Post]:
+async def get_title_Post(title: str,  db: Session = Depends(get_db)) -> Post:
     return get_title_post(title=title, db=db)
 
 
 # modify_post
 @router.patch("/modify/{user_id}/{post_id}", status_code=status.HTTP_200_OK)
-async def modify_Post(user: int, post_id: int, db: Session = Depends(get_db),) -> List[PostOpt]:
+async def modify_Post(user: int, post_id: int, db: Session = Depends(get_db),) -> PostOpt:
     return modify_post(user=user, id=post_id, db=db)
 
 
 # delete post
 @router.delete("/delete/{user_id}/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_Post(user: int, post_id: int, db: Session = Depends(get_db)) -> List[PostOpt]:
+async def delete_Post(user: int, post_id: int, db: Session = Depends(get_db)) -> None:
     return delete_post(user=user, id=post_id, db=db)

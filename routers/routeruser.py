@@ -1,16 +1,18 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from PydenticModel.user import User
 from starlette import status
 from sqlalchemy.orm import Session
 from database import get_db
 from DataBaseModel.user import create_user, get_all_users, get_one_user, modify_user, delete_user
-
+from DataBaseModel.user import User as dataUser
 router = APIRouter(prefix="/User", tags="User endpoints")
 
 #create user
 @router.post("/createuser", status_code=status.HTTP_201_CREATED)
 async def create_User(user: User,db: Session = Depends(get_db)) ->User:
+    if user in dataUser:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail =f"{user.name} already exist")
     return create_user(user=user, db=db)
 
 
