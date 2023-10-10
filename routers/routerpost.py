@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from PydenticModel.post import Post, PostOpt
+from PydanticModel.post import Post, PostOpt
 from starlette import status
 from sqlalchemy.orm import Session
 from database import get_db
@@ -15,7 +15,7 @@ from DataBaseModel.post import (
     delete_post,
 )
 
-router = APIRouter(prefix="/Post", tags="Post endpoints")
+router = APIRouter(prefix="/Post", tags=["Post endpoints"])
 
 
 # create post

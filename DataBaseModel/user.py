@@ -1,9 +1,9 @@
-from database import base
+from database import Base
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import Session
 from typing import Dict, Union
 
-class User(base):
+class User(Base):
 
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, nullable=False)

@@ -1,11 +1,11 @@
-from database import base
+from database import Base
 from sqlalchemy import Column,Integer, String, ForeignKey
 from sqlalchemy.orm import Session, relationship
-from user import User
+from DataBaseModel.user import User
 from typing import Dict, Union
 
 
-class Post(base):
+class Post(Base):
 
     __tablename__ = "posts"
     id = Column(Integer, primary_key=True, nullable=False)
