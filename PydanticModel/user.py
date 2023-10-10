@@ -6,6 +6,7 @@ class User(BaseModel):
     name: str
     password: str
 
+    # password validation
     def valid_password(password):
         if not any(char.isupper() for char in password):
             raise ValidationError("You must use one upper letter!")

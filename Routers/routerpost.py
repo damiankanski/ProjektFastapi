@@ -21,7 +21,7 @@ router = APIRouter(tags=["Post endpoints"])
 
 
 # create post
-@router.post("/v1/add-post", status_code=status.HTTP_201_CREATED)
+@router.post("/v1/posts", status_code=status.HTTP_201_CREATED)
 async def post_create(
     post: Post, user: int, db: Session = Depends(get_db)
 ) -> List[PostOpt]:

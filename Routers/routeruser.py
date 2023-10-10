@@ -19,7 +19,7 @@ router = APIRouter(tags=["User endpoints"])
 
 
 # create user
-@router.post("/v1/add-user", status_code=status.HTTP_201_CREATED)
+@router.post("/v1/posts", status_code=status.HTTP_201_CREATED)
 async def user_create(user: User, db: Session = Depends(get_db)) -> User:
     if user in dataUser:
         raise HTTPException(

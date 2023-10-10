@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 import uvicorn
-from routers import routerpost, routeruser
+from Routers import routerpost, routeruser
 
 app = FastAPI()
 
