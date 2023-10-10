@@ -15,12 +15,12 @@ from PydanticModel.user import User
 from sqlalchemy.orm import Session
 from starlette import status
 
-router = APIRouter(prefix="/User", tags=["User endpoints"])
+router = APIRouter(tags=["User endpoints"])
 
 
 # create user
-@router.post("/createuser", status_code=status.HTTP_201_CREATED)
-async def create_User(user: User, db: Session = Depends(get_db)) -> User:
+@router.post("/v1/add-user", status_code=status.HTTP_201_CREATED)
+async def user_create(user: User, db: Session = Depends(get_db)) -> User:
     if user in dataUser:
         raise HTTPException(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
@@ -30,14 +30,14 @@ async def create_User(user: User, db: Session = Depends(get_db)) -> User:
 
 
 # get all users
-@router.get("/allusers", status_code=status.HTTP_200_OK)
-async def get_all_Users(db: Session = Depends(get_db)) -> List[User]:
+@router.get("/v1/users", status_code=status.HTTP_200_OK)
+async def user_list(db: Session = Depends(get_db)) -> List[User]:
     return get_all_users(db=db)
 
 
 # get one user
-@router.get("/oneuser/{name}", status_code=status.HTTP_200_OK)
-async def get_one_User(name: str, db: Session = Depends(get_db)) -> User:
+@router.get("/v1/users/{name}", status_code=status.HTTP_200_OK)
+async def user_name(name: str, db: Session = Depends(get_db)) -> User:
     if name not in dataUser:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail=f"This {name} is not exist"
@@ -46,8 +46,8 @@ async def get_one_User(name: str, db: Session = Depends(get_db)) -> User:
 
 
 # modify_user
-@router.patch("/modify/{user_id}", status_code=status.HTTP_200_OK)
-async def modify_User(user_id: int, db: Session = Depends(get_db)) -> User:
+@router.patch("/v1/users/{user_id}", status_code=status.HTTP_200_OK)
+async def user_update(user_id: int, db: Session = Depends(get_db)) -> User:
     if user_id not in dataUser:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -57,8 +57,8 @@ async def modify_User(user_id: int, db: Session = Depends(get_db)) -> User:
 
 
 # delete user
-@router.delete("/delete/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_User(user_id: int, db: Session = Depends(get_db)) -> None:
+@router.delete("/v1/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def user_delete(user_id: int, db: Session = Depends(get_db)) -> None:
     if user_id not in dataUser:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
