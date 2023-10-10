@@ -8,12 +8,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseModel/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseModel/post.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataBaseModel/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataBaseModel/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PydenticModel/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PydanticModel/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PydenticModel/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/PydanticModel/post.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PydenticModel/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/PydanticModel/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PydanticModel/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/PydanticModel/post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PydanticModel/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/PydanticModel/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/routerpost.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routerpost.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/routeruser.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/routeruser.py" afterDir="false" />
     </list>
@@ -40,6 +41,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="PM03-working-fastapi.docs" />
+                    <option name="lastUsedInstant" value="1696939972" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="PM02-added-routers" />
                     <option name="lastUsedInstant" value="1696432728" />
@@ -72,15 +77,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;PM02-added-routers&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Damian/PycharmProjects/business-assistant-api&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "PM03-working-fastapi.docs",
+    "last_opened_file_path": "C:/Users/Damian/PycharmProjects/business-assistant-api",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Socialmedia1" />

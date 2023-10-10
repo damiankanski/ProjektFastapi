@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
     database_password: str = "your_datebase_pass"
     database_name: str = "your_datebase_name"
@@ -9,6 +10,5 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
 
+
 settings = Settings()
-
-
