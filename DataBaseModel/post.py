@@ -34,7 +34,7 @@ def get_all_posts(db: Session):
     return all_posts
 
 
-# wszystkie posty konkretnego uzytkownika
+# All posts for direct user
 
 
 def get_all_user_post(id: int, db: Session):
@@ -42,13 +42,13 @@ def get_all_user_post(id: int, db: Session):
     return user_posts
 
 
-# wyszukaj konkretny post dla id_postu
+# Post for direct post id
 def get_direct_id_post(user: int, id: int, db: Session):
     direct_id_post = db.query(Post).filter(Post.user_id == user, Post.id == id)
     return direct_id_post
 
 
-# Wyszukaj konkretny post po title
+# Post for title
 
 
 def get_title_post(user: int, title: str, db: Session):
@@ -56,21 +56,21 @@ def get_title_post(user: int, title: str, db: Session):
     return title_post
 
 
-# modyfikacja postu
+# Modify post
 def modify_post(user: int, id: int, db: Session, values: Dict[str, Union[str, int]]):
-    modifyPost = db.query(Post).filter(Post.user_id == user, Post.id == id).first()
+    post = db.query(Post).filter(Post.user_id == user, Post.id == id).first()
 
-    if modifyPost:
+    if post:
         for key, value in values.items():
-            setattr(modifyPost, key, value)
+            setattr(post, key, value)
 
         db.commit()
-        return modifyPost.first()
+        return post.first()
     else:
-        raise ValueError("Postr not found.")
+        raise ValueError("Post not found.")
 
 
-# usuniecie postu
+# Delete post
 
 
 def delete_post(

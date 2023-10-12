@@ -12,7 +12,7 @@ class User(Base):
     password = Column(String, nullable=False)
 
 
-# stworz usera
+# Create user
 
 
 def create_user(user: User, db: Session) -> User:
@@ -23,7 +23,7 @@ def create_user(user: User, db: Session) -> User:
     return newUser
 
 
-# zwroc wszytskich userow
+# List of users
 
 
 def get_all_users(db: Session):
@@ -31,7 +31,7 @@ def get_all_users(db: Session):
     return all_users
 
 
-# zwroc dane usera
+# One user
 
 
 def get_one_user(db: Session, name: str):
@@ -39,21 +39,21 @@ def get_one_user(db: Session, name: str):
     return one_user
 
 
-# modyfikuj usera
+# Modify user
 def modify_user(db: Session, user_id: int, values: Dict[str, Union[str, int]]):
-    modifyUser = db.query(User).filter(User.id == user_id).first()
+    user = db.query(User).filter(User.id == user_id).first()
 
-    if modifyUser:
+    if user:
         for key, value in values.items():
-            setattr(modifyUser, key, value)
+            setattr(user, key, value)
 
         db.commit()
-        return modifyUser.first()
+        return user.first()
     else:
         raise ValueError("User not found")
 
 
-# usun uzytkownika
+# Delete user
 def delete_user(db: Session, user_id: str):
     deleted = db.query(User).filter(User.id == user_id)
 

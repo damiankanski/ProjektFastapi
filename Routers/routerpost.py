@@ -17,26 +17,26 @@ from PydanticModel.post import Post, PostOpt
 from sqlalchemy.orm import Session
 from starlette import status
 
-router = APIRouter(prefix="/Post", tags=["Post endpoints"])
+router = APIRouter(tags=["Post endpoints"])
 
 
 # create post
-@router.post("/createpost", status_code=status.HTTP_201_CREATED)
-async def create_Post(
+@router.post("/v1/posts", status_code=status.HTTP_201_CREATED)
+async def post_create(
     post: Post, user: int, db: Session = Depends(get_db)
 ) -> List[PostOpt]:
     return create_post(post=post, user=user, db=db)
 
 
 # get all post
-@router.get("/allposts", status_code=status.HTTP_200_OK)
-async def get_all_Posts(db: Session = Depends(get_db)) -> List[Post]:
+@router.get("/v1/posts", status_code=status.HTTP_200_OK)
+async def post_list(db: Session = Depends(get_db)) -> List[Post]:
     return get_all_posts(db=db)
 
 
 # get all post for direct user
-@router.get("/allposts/{user_id}", status_code=status.HTTP_200_OK)
-async def get_all_user_Post(
+@router.get("/v1/posts/{user_id}", status_code=status.HTTP_200_OK)
+async def post_by_user(
     user_id: int,
     db: Session = Depends(get_db),
 ) -> List[PostOpt]:
@@ -49,8 +49,8 @@ async def get_all_user_Post(
 
 
 # get post for post_id
-@router.get("/onepost/{user_id}/{post_id}", status_code=status.HTTP_200_OK)
-async def get_direct_id_Post(
+@router.get("/v1/posts/{user_id}/{post_id}", status_code=status.HTTP_200_OK)
+async def post_by_id(
     user_id: int, post_id: int, db: Session = Depends(get_db)
 ) -> PostOpt:
     if user_id not in dataPost:
@@ -68,8 +68,8 @@ async def get_direct_id_Post(
 
 
 # get_post for post_title
-@router.get("/onepost/{title}", status_code=status.HTTP_200_OK)
-async def get_title_Post(title: str, db: Session = Depends(get_db)) -> Post:
+@router.get("/v1/posts/{title}", status_code=status.HTTP_200_OK)
+async def post_title(title: str, db: Session = Depends(get_db)) -> Post:
     if title not in dataPost:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -79,8 +79,8 @@ async def get_title_Post(title: str, db: Session = Depends(get_db)) -> Post:
 
 
 # modify_post
-@router.patch("/modify/{user_id}/{post_id}", status_code=status.HTTP_200_OK)
-async def modify_Post(
+@router.patch("/v1/posts/{user_id}/{post_id}", status_code=status.HTTP_200_OK)
+async def post_update(
     user_id: int,
     post_id: int,
     db: Session = Depends(get_db),
@@ -100,8 +100,8 @@ async def modify_Post(
 
 
 # delete post
-@router.delete("/delete/{user_id}/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_Post(
+@router.delete("/v1/posts/{user_id}/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def post_delete(
     user_id: int, post_id: int, db: Session = Depends(get_db)
 ) -> None:
     if user_id not in dataPost:

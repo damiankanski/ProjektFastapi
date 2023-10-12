@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+
+  database:
+    restart: always
+    image: postgres:15-alpine
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U application" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: application
+      POSTGRES_PASSWORD: secret_pass
+      POSTGRES_DB: application
+    env_file:
+      - .env
+
+volumes:
+  pg-data:
+    driver: local

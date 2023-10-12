@@ -10,6 +10,7 @@ class Post(BaseModel):
     description: str
 
 
+# Model with user data
 class PostOpt(Post):
     user: User
 
