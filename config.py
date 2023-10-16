@@ -1,14 +1,17 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings
 
 
+
+
 class Settings(BaseSettings):
-    database_password: str = "your_datebase_pass"
-    database_name: str = "your_datebase_name"
-    database_username: str = "your_datebase_username"
-    access_token_expire_minute: int = 15
+    DB_ENDPOINT: str = Field(env="DB_ENDPOINT")
+    DB_PORT: int = Field(env="DB_PORT")
+    DB_PASSWORD: str = Field(env="DB_PASSWORD")
+    DB_USERNAME: str = Field(env="DB_USERNAME")
+    DB_NAME: str = Field(env="DB_NAME")
 
     class Config:
         env_file = ".env"
-
 
 settings = Settings()

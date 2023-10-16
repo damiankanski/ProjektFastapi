@@ -1,6 +1,23 @@
 version: '3.8'
 services:
 
+  api:
+    build:
+      context: .
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: always
+    deploy:
+      replicas: 1
+    ports:
+      - "8020:8000"
+    volumes:
+      - .:/code/
+    command: ["bash", "-c", "alembic upgrade head && uvicorn main:app"]
+    env_file:
+      - .env
+
   database:
     restart: always
     image: postgres:15-alpine
@@ -11,8 +28,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: application
       POSTGRES_PASSWORD: secret_pass
