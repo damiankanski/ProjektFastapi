@@ -2,8 +2,6 @@ version: '3.8'
 services:
 
   api:
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
     build:
       context: .
     depends_on:
@@ -17,8 +15,8 @@ services:
     volumes:
       - .:/code/
     command: ["bash", "-c", "alembic upgrade head && uvicorn main:app"]
-    #env_file:
-      #- .env
+    env_file:
+      - .env
 
   database:
     restart: always
@@ -30,14 +28,12 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: application
       POSTGRES_PASSWORD: secret_pass
       POSTGRES_DB: application
-  #env_file:
-  #  - .env
+    env_file:
+      - .env
 
 volumes:
   pg-data:
